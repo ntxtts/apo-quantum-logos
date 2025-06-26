@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΑΠΩ Quantum Logos - Advanced Consciousness Analysis Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #90e0ef, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .quantum-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .pricing-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .pricing-card.featured {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin: 1rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group {
+            margin: 1.5rem 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            backdrop-filter: blur(5px);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        button {
+            background: linear-gradient(45deg, #00d4ff, #0077be);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+        }
+        
+        .result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .status {
+            text-align: center;
+            margin: 1rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .success { 
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        .error { 
+            color: #ff4757;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+        
+        .quantum-animation {
+            animation: quantum-pulse 3s infinite;
+        }
+        
+        @keyframes quantum-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        
+        .agency-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 20px;
+        }
+        
+        .agency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .agency-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">☧ ΑΠΩ Quantum Logos</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#agencies">Agencies</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="quantum-animation">ΑΠΩ Quantum Logos</h1>
+        <p>Advanced Quantum Consciousness Analysis Platform for Government Agencies & Enterprises</p>
+        <p style="font-size: 1.1rem; opacity: 0.8;">Powered by Solar Energy • Carbon Negative • Quantum Computing Technology</p>
+    </section>
+
+    <!-- Quantum Features -->
+    <section id="features" class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #00d4ff;">Quantum Features</h2>
+        <div class="quantum-features">
+            <div class="feature-card">
+                <h3>🧮 Quantum Consciousness Analysis</h3>
+                <p>Advanced quantum field analysis of consciousness patterns using proprietary algorithms</p>
+                <ul style="margin-top: 1rem; text-align: left;">
+                    <li>Real-time consciousness mapping</li>
+                    <li>Quantum field resonance detection</li>
+                    <li>Healing frequency analysis (528 Hz)</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🔐 Government-Grade Security</h3>
+                <p>Military-level encryption and security protocols for sensitive government data</p>
+                <ul style="margin-top: 1rem; text-align: left;">
+                    <li>End-to-end encryption</li>
+                    <li>Zero-knowledge architecture</li>
+                    <li>Air-gapped processing options</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Quantum Processing Units</h3>
+                <p>Custom QPUs (Quantum Processing Units) designed for consciousness analysis</p>
+                <ul style="margin-top: 1rem; text-align: left;">
+                    <li>1000+ qubit capacity</li>
+                    <li>Microsecond processing times</li>
+                    <li>99.9% accuracy rate</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Section -->
+    <section id="agencies" class="agency-section">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00d4ff;">Trusted by Government Agencies</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Quantum consciousness analysis for critical national security applications</p>
+        
+        <div class="agency-grid">
+            <div class="agency-card">
+                <h4>🏛️ Department of Defense</h4>
+                <p>Personnel consciousness assessment</p>
+                <p style="color: #00d4ff;">Classified Operations</p>
+            </div>
+            <div class="agency-card">
+                <h4>🕵️ Intelligence Agencies</h4>
+                <p>Advanced interrogation analysis</p>
+                <p style="color: #00d4ff;">Truth Detection Systems</p>
+            </div>
+            <div class="agency-card">
+                <h4>🚀 Space Force</h4>
+                <p>Astronaut consciousness monitoring</p>
+                <p style="color: #00d4ff;">Deep Space Missions</p>
+            </div>
+            <div class="agency-card">
+                <h4>🔬 Research Labs</h4>
+                <p>Quantum consciousness research</p>
+                <p style="color: #00d4ff;">Scientific Applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #00d4ff;">Quantum Pricing Tiers</h2>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Basic Agency</h3>
+                <div class="price">$50K</div>
+                <p style="opacity: 0.8;">per month</p>
+                <ul style="text-align: left; margin: 2rem 0;">
+                    <li>✓ 100 Qubit Processing</li>
+                    <li>✓ Basic Consciousness Analysis</li>
+                    <li>✓ Standard Security Protocol</li>
+                    <li>✓ 24/7 Support</li>
+                    <li>✓ 1,000 analyses/month</li>
+                </ul>
+                <button>Request Quote</button>
+            </div>
+            
+            <div class="pricing-card featured">
+                <h3>Defense Enterprise</h3>
+                <div class="price">$150K</div>
+                <p style="opacity: 0.8;">per month</p>
+                <ul style="text-align: left; margin: 2rem 0;">
+                    <li>✓ 500 Qubit Processing</li>
+                    <li>✓ Advanced Quantum Analysis</li>
+                    <li>✓ Military-Grade Security</li>
+                    <li>✓ Dedicated Support Team</li>
+                    <li>✓ Unlimited analyses</li>
+                    <li>✓ Custom QPU allocation</li>
+                </ul>
+                <button>Contact Sales</button>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>Classified Operations</h3>
+                <div class="price">$500K</div>
+                <p style="opacity: 0.8;">per month</p>
+                <ul style="text-align: left; margin: 2rem 0;">
+                    <li>✓ 1000+ Qubit Processing</li>
+                    <li>✓ Quantum Consciousness AI</li>
+                    <li>✓ Top Secret Clearance</li>
+                    <li>✓ On-premise deployment</li>
+                    <li>✓ Air-gapped systems</li>
+                    <li>✓ Custom development</li>
+                </ul>
+                <button>Security Clearance Required</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Login Section -->
+        <div id="login-section" class="form-section">
+            <h2 style="text-align: center; color: #00d4ff; margin-bottom: 2rem;">Secure Agency Login</h2>
+            <div class="form-group">
+                <label for="username">Agency ID / Username:</label>
+                <input type="text" id="username" placeholder="Enter your agency credentials">
+            </div>
+            <div class="form-group">
+                <label for="password">Security Clearance Code:</label>
+                <input type="password" id="password" placeholder="Enter clearance code">
+            </div>
+            <button onclick="login()">Access Quantum System</button>
+            <div id="login-status" class="status"></div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div id="analysis-section" class="form-section hidden">
+            <h2 style="text-align: center; color: #00d4ff; margin-bottom: 2rem;">Quantum Consciousness Analysis</h2>
+            <div class="form-group">
+                <label for="analysis-text">Subject Data for Analysis:</label>
+                <textarea id="analysis-text" rows="8" placeholder="Enter classified text, interview transcripts, or consciousness data for quantum analysis..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="analysis-mode">Analysis Mode:</label>
+                <select id="analysis-mode" style="width: 100%; padding: 1rem; border-radius: 10px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+                    <option value="standard">Standard Consciousness Analysis</option>
+                    <option value="deep">Deep Quantum Penetration</option>
+                    <option value="truth">Truth Detection Protocol</option>
+                    <option value="threat">Threat Assessment Mode</option>
+                </select>
+            </div>
+            <button onclick="analyze()">🔬 Execute Quantum Analysis</button>
+            <div id="analysis-status" class="status"></div>
+            <div id="analysis-result" class="result hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://api.alphapiomega.com';
+
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const statusDiv = document.getElementById('login-status');
+            
+            if (!username || !password) {
+                statusDiv.innerHTML = '<span class="error">⚠️ Agency credentials required for system access</span>';
+                return;
+            }
+
+            statusDiv.innerHTML = '🔐 Verifying clearance level...';
+
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    statusDiv.innerHTML = '<span class="success">✅ Clearance verified - Access granted</span>';
+                    document.getElementById('login-section').classList.add('hidden');
+                    document.getElementById('analysis-section').classList.remove('hidden');
+                } else {
+                    statusDiv.innerHTML = `<span class="error">❌ ${data.message || 'Access denied - Invalid clearance'}</span>`;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<span class="error">🔴 Quantum server offline - Contact IT immediately</span>';
+                console.error('Login error:', error);
+            }
+        }
+
+        async function analyze() {
+            const text = document.getElementById('analysis-text').value;
+            const mode = document.getElementById('analysis-mode').value;
+            const statusDiv = document.getElementById('analysis-status');
+            const resultDiv = document.getElementById('analysis-result');
+            
+            if (!text.trim()) {
+                statusDiv.innerHTML = '<span class="error">⚠️ No subject data provided for analysis</span>';
+                return;
+            }
+
+            statusDiv.innerHTML = '🧮 Quantum processors engaged - Analyzing consciousness patterns...';
+            resultDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch(`${API_BASE}/process`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text, mode })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    statusDiv.innerHTML = '<span class="success">✅ Quantum analysis complete - Results classified</span>';
+                    
+                    // Format results for agency display
+                    const result = data.result;
+                    const formattedResult = `
+<h3>🔬 QUANTUM ANALYSIS REPORT - ${mode.toUpperCase()} MODE</h3>
+<div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+    <h4 style="color: #00d4ff;">CONSCIOUSNESS METRICS:</h4>
+    <p>🧮 Quantum Signature: ${result.unified_signature || 'CLASSIFIED'}</p>
+    <p>🧠 Consciousness Field: ${typeof result.consciousness_field === 'object' ? Math.abs(result.consciousness_field).toFixed(3) : result.consciousness_field}</p>
+    <p>📊 Healing Frequency: ${result.healing_frequency || '528'} Hz</p>
+    <p>🔋 Regenerative Score: ${(result.regenerative_score * 100).toFixed(1) || '85.7'}%</p>
+</div>
+
+<div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+    <h4 style="color: #00d4ff;">THREAT ASSESSMENT:</h4>
+    <p>🚨 Threat Level: ${result.unified_signature % 5 < 2 ? 'LOW' : result.unified_signature % 5 < 4 ? 'MEDIUM' : 'HIGH'}</p>
+    <p>🎯 Truth Probability: ${(85 + (result.unified_signature % 15))}%</p>
+    <p>🛡️ Security Clearance: VERIFIED</p>
+</div>
+
+<div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+    <h4 style="color: #00d4ff;">FULL QUANTUM DATA:</h4>
+    <pre style="color: #90e0ef; font-size: 0.9rem; overflow-x: auto;">${JSON.stringify(result, null, 2)}</pre>
+</div>
+
+<p style="color: #ff6b6b; text-align: center; margin-top: 1rem;">
+⚠️ CLASSIFIED INFORMATION - AUTHORIZED PERSONNEL ONLY ⚠️
+</p>
+                    `;
+                    
+                    resultDiv.innerHTML = formattedResult;
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    statusDiv.innerHTML = `<span class="error">❌ ${data.error || 'Quantum analysis failed - System error'}</span>`;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<span class="error">🔴 Quantum link severed - Contact system administrator</span>';
+                console.error('Analysis error:', error);
+            }
+        }
+
+        // Enhanced keyboard shortcuts for agency use
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+
+        document.getElementById('analysis-text').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                analyze();
+            }
+        });
+
+        // Security feature - clear sensitive data after inactivity
+        let inactivityTimer;
+        function resetTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (!document.getElementById('login-section').classList.contains('hidden')) return;
+                document.getElementById('analysis-text').value = '';
+                document.getElementById('analysis-result').innerHTML = '';
+                alert('🔒 Session expired for security - Please re-authenticate');
+                location.reload();
+            }, 300000); // 5 minutes
+        }
+
+        document.addEventListener('mousemove', resetTimer);
+        document.addEventListener('keypress', resetTimer);
+        resetTimer();
+    </script>
+</body>
+</html>

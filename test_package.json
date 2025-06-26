@@ -1,0 +1,17 @@
+[
+    {
+        "description": "package.json should not be empty and must contain valid JSON",
+        "inputFile": "/C:/APO-QUANTUM-LOGOS/package.json",
+        "expected": "File should contain valid JSON object with required fields like name, version, and dependencies."
+    },
+    {
+        "description": "package.json should not contain markdown or citation blocks",
+        "inputFile": "/C:/APO-QUANTUM-LOGOS/package.json",
+        "expected": "File should not contain markdown headers, code fences, or citation comments. Only valid JSON is allowed."
+    },
+    {
+        "description": "package.json should not contain code citations or license references in JSON",
+        "inputFile": "/C:/APO-QUANTUM-LOGOS/package.json",
+        "expected": "File should not include code citation blocks or license references outside of a 'license' field."
+    }
+]

@@ -1,0 +1,31 @@
+{
+  "name": "apo-quantum-logos",
+  "version": "1.0.0",
+  "description": "Alpha Pi Omega Quantum Logos - Solar-Powered Consciousness Analysis Platform",
+  "main": "index.html",
+  "scripts": {
+    "build": "mkdir -p dist && cp *.html *.js *.css dist/ 2>/dev/null || true",
+    "dev": "npx http-server . -p 8080",
+    "deploy": "netlify deploy --prod --dir=dist"
+  },
+  "keywords": [
+    "quantum",
+    "consciousness",
+    "solar-powered",
+    "regenerative",
+    "alpha-pi-omega"
+  ],
+  "author": "Alpha Pi Omega Corporation",
+  "license": "APO-Regenerative",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphapiomega/apo-quantum-logos.git"
+  },
+  "homepage": "https://www.alphapiomega.com",
+  "bugs": {
+    "url": "https://github.com/alphapiomega/apo-quantum-logos/issues"
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alpha Pi Omega - Pricing Plans</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .pricing-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; text-align: center; }
+        .price { font-size: 3em; margin: 20px 0; }
+        .btn { background: #4ade80; color: white; padding: 15px 30px; border: none; border-radius: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1>🏢 Alpha Pi Omega Corp</h1>
+        <h2>Text Analysis Pricing Plans</h2>
+        <p>Choose the perfect plan for your business needs</p>
+    </div>
+    
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>🎁 Free Trial</h3>
+            <div class="price">$0</div>
+            <p>10 analyses per month</p>
+            <ul style="text-align: left;">
+                <li>Basic text analysis</li>
+                <li>Sentiment scoring</li>
+                <li>Email support</li>
+            </ul>
+            <button class="btn" onclick="startFreeTrial()">Start Free Trial</button>
+        </div>
+        
+        <div class="pricing-card" style="border: 3px solid #4ade80;">
+            <h3>💼 Professional</h3>
+            <div class="price">$29</div>
+            <p>100 analyses per month</p>
+            <ul style="text-align: left;">
+                <li>Advanced analysis</li>
+                <li>Team collaboration</li>
+                <li>API access</li>
+                <li>Priority support</li>
+            </ul>
+            <button class="btn" onclick="subscribeToPro()">Choose Professional</button>
+        </div>
+        
+        <div class="pricing-card">
+            <h3>🏢 Enterprise</h3>
+            <div class="price">$99</div>
+            <p>Unlimited analyses</p>
+            <ul style="text-align: left;">
+                <li>Everything in Pro</li>
+                <li>Custom integrations</li>
+                <li>Dedicated support</li>
+                <li>SLA guarantee</li>
+            </ul>
+            <button class="btn" onclick="contactEnterprise()">Contact Sales</button>
+        </div>
+    </div>
+    
+    <script>
+        function startFreeTrial() {
+            window.location.href = '/signup.html?plan=free';
+        }
+        
+        function subscribeToPro() {
+            window.location.href = '/signup.html?plan=professional';
+        }
+        
+        function contactEnterprise() {
+            window.location.href = 'mailto:sales@alphapiomega.com?subject=Enterprise Plan Inquiry';
+        }
+    </script>
+</body>
+</html>
