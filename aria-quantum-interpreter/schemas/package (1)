@@ -1,0 +1,10 @@
+{
+  "name": "aria-quantum-interpreter",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vite": "^4.0.0"
+  }
+}
