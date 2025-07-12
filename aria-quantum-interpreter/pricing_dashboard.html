@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRO Quantum System - Pricing & Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .dashboard-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .api-keys {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .api-key-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .api-key-card h3 {
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .api-key {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.popular {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: #667eea;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .pricing-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price .currency {
+            font-size: 1rem;
+            vertical-align: top;
+        }
+
+        .pricing-card .price .period {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .demo-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .api-tester {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .api-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .api-response {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 ASTRO Quantum System</h1>
+            <p>Quantum Computing Platform with Aria Language & APO Logic</p>
+        </div>
+
+        <!-- API Keys Section -->
+        <div class="dashboard-section">
+            <h2>🔑 Demo API Keys</h2>
+            <p>Use these demo API keys to test our quantum computing platform:</p>
+            <div class="api-keys" id="apiKeys">
+                <div class="api-key-card">
+                    <h3>Free Tier</h3>
+                    <div class="api-key" id="freeKey">Loading...</div>
+                    <p>100 operations/month • 4 qubits max</p>
+                </div>
+                <div class="api-key-card">
+                    <h3>Starter Tier</h3>
+                    <div class="api-key" id="starterKey">Loading...</div>
+                    <p>1,000 operations/month • 8 qubits max</p>
+                </div>
+                <div class="api-key-card">
+                    <h3>Professional</h3>
+                    <div class="api-key" id="proKey">Loading...</div>
+                    <p>10,000 operations/month • 32 qubits max</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Demo Section -->
+        <div class="dashboard-section">
+            <h2>🧪 Live API Testing</h2>
+            <div class="demo-grid">
+                <div class="api-tester">
+                    <h3>Quantum Command Tester</h3>
+                    <select id="apiKeySelect" class="api-input" title="Select API Key for Testing">
+                        <option value="">Select API Key</option>
+                    </select>
+                    <input type="text" id="quantumCommand" class="api-input" 
+                           placeholder="Enter quantum command (e.g., 'quantum entangle 2')" 
+                           value="quantum entangle 2">
+                    <button onclick="testQuantumAPI()" class="btn">Execute Quantum Command</button>
+                    <h4>API Response:</h4>
+                    <div id="apiResponse" class="api-response">Click "Execute" to test the API...</div>
+                </div>
+                <div class="api-tester">
+                    <h3>Usage Dashboard</h3>
+                    <button onclick="getDashboard()" class="btn">Get User Dashboard</button>
+                    <h4>Dashboard Data:</h4>
+                    <div id="dashboardResponse" class="api-response">Click "Get Dashboard" to view usage...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div class="dashboard-section">
+            <h2>💰 Subscription Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">
+                        <span class="currency">$</span>0
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>100 quantum operations</li>
+                        <li>Up to 4 simulated qubits</li>
+                        <li>Basic algorithms</li>
+                        <li>Community support</li>
+                        <li>Documentation access</li>
+                    </ul>
+                    <button class="btn">Get Started Free</button>
+                </div>
+
+                <div class="pricing-card popular">
+                    <h3>Starter</h3>
+                    <div class="price">
+                        <span class="currency">$</span>99
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>1,000 quantum operations</li>
+                        <li>Up to 8 simulated qubits</li>
+                        <li>Advanced algorithms</li>
+                        <li>Email support</li>
+                        <li>API access</li>
+                        <li>Usage analytics</li>
+                    </ul>
+                    <button class="btn">Start 14-Day Trial</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Professional</h3>
+                    <div class="price">
+                        <span class="currency">$</span>499
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>10,000 quantum operations</li>
+                        <li>Up to 32 simulated qubits</li>
+                        <li>All quantum algorithms</li>
+                        <li>Priority support</li>
+                        <li>Advanced API features</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <button class="btn">Contact Sales</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>2,499
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Unlimited operations</li>
+                        <li>Up to 128 simulated qubits</li>
+                        <li>Custom algorithms</li>
+                        <li>Dedicated support</li>
+                        <li>Hardware access</li>
+                        <li>Private deployment</li>
+                    </ul>
+                    <button class="btn">Enterprise Demo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Stats -->
+        <div class="dashboard-section">
+            <h2>📊 Live Platform Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalUsers">47</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="monthlyRevenue">$12,750</div>
+                    <div class="stat-label">Monthly Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="quantumOps">15,420</div>
+                    <div class="stat-label">Quantum Operations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="successRate">96.6%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = window.location.origin;
+        
+        // Load API keys on page load
+        async function loadApiKeys() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/getApiKey`);
+                const data = await response.json();
+                
+                if (data.demo_keys) {
+                    document.getElementById('freeKey').textContent = data.demo_keys.free_tier;
+                    document.getElementById('starterKey').textContent = data.demo_keys.starter_tier;
+                    document.getElementById('proKey').textContent = data.demo_keys.professional_tier;
+                    
+                    // Populate API key selector
+                    const selector = document.getElementById('apiKeySelect');
+                    selector.innerHTML = '<option value="">Select API Key</option>';
+                    Object.entries(data.demo_keys).forEach(([tier, key]) => {
+                        const option = document.createElement('option');
+                        option.value = key;
+                        option.textContent = `${tier.replace('_', ' ').toUpperCase()} - ${key.substring(0, 20)}...`;
+                        selector.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading API keys:', error);
+                document.getElementById('freeKey').textContent = 'Error loading key';
+                document.getElementById('starterKey').textContent = 'Error loading key';
+                document.getElementById('proKey').textContent = 'Error loading key';
+            }
+        }
+
+        // Test quantum API
+        async function testQuantumAPI() {
+            const apiKey = document.getElementById('apiKeySelect').value;
+            const command = document.getElementById('quantumCommand').value;
+            const responseDiv = document.getElementById('apiResponse');
+            
+            if (!apiKey) {
+                responseDiv.textContent = 'Please select an API key first.';
+                return;
+            }
+            
+            if (!command) {
+                responseDiv.textContent = 'Please enter a quantum command.';
+                return;
+            }
+            
+            responseDiv.textContent = 'Executing quantum command...';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/runAria?command=${encodeURIComponent(command)}`, {
+                    method: 'GET',
+                    headers: {
+                        'X-API-Key': apiKey,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+                
+                if (response.status === 429) {
+                    responseDiv.style.color = '#e74c3c';
+                } else if (response.ok) {
+                    responseDiv.style.color = '#27ae60';
+                } else {
+                    responseDiv.style.color = '#f39c12';
+                }
+                
+            } catch (error) {
+                responseDiv.textContent = `Error: ${error.message}`;
+                responseDiv.style.color = '#e74c3c';
+            }
+        }
+
+        // Get user dashboard
+        async function getDashboard() {
+            const apiKey = document.getElementById('apiKeySelect').value;
+            const responseDiv = document.getElementById('dashboardResponse');
+            
+            if (!apiKey) {
+                responseDiv.textContent = 'Please select an API key first.';
+                return;
+            }
+            
+            responseDiv.textContent = 'Loading dashboard...';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/dashboard`, {
+                    method: 'GET',
+                    headers: {
+                        'X-API-Key': apiKey,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+                responseDiv.style.color = response.ok ? '#27ae60' : '#e74c3c';
+                
+            } catch (error) {
+                responseDiv.textContent = `Error: ${error.message}`;
+                responseDiv.style.color = '#e74c3c';
+            }
+        }
+
+        // Update live stats periodically
+        function updateLiveStats() {
+            // Simulate live data updates
+            const stats = {
+                totalUsers: Math.floor(Math.random() * 10) + 42,
+                monthlyRevenue: (Math.random() * 2000 + 11000).toFixed(0),
+                quantumOps: Math.floor(Math.random() * 1000) + 15000,
+                successRate: (Math.random() * 3 + 95).toFixed(1)
+            };
+            
+            document.getElementById('totalUsers').textContent = stats.totalUsers;
+            document.getElementById('monthlyRevenue').textContent = `$${stats.monthlyRevenue}`;
+            document.getElementById('quantumOps').textContent = stats.quantumOps.toLocaleString();
+            document.getElementById('successRate').textContent = `${stats.successRate}%`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadApiKeys();
+            updateLiveStats();
+            
+            // Update stats every 30 seconds
+            setInterval(updateLiveStats, 30000);
+        });
+
+        // Allow Enter key to execute command
+        document.getElementById('quantumCommand').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                testQuantumAPI();
+            }
+        });
+    </script>
+</body>
+</html>
